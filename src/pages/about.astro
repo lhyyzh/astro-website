@@ -16,6 +16,20 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
     <meta name="viewport" content="width=device-width" />
     <title>{pageTitle}</title>
   </head>
+  <style>
+        h1 {
+            color: purple;
+            font-size: 4rem;
+        }
+        .skills {
+        color: green;
+        font-weight: bold;
+        }
+        .skill {
+        color: rgb(241, 123, 5);
+        font-weight: bold;
+        }
+    </style>
   <body>
     <a href="/">首页</a>
     <a href="/about/">关于</a>
@@ -34,14 +48,12 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
             </li>
             )
         }
-        
-
- 
     {
         skills.length >= 1 && (
-        <li>我的技能包括：
+        <li >
+            <span class="skills">我的技能包括：</span>
             <ul>
-                {skills.map((tmp) => <li>{tmp}</li>)}
+                {skills.map((tmp) => <li class="skill">{tmp}</li>)}
             </ul>
         </li>
         )
