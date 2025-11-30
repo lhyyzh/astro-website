@@ -1,5 +1,9 @@
 ---
+import '../styles/global.css';
 const pageTitle = "关于我";
+const skillColor = "rgb(241, 123, 5)";
+const fontWeight = "bold";
+const textCase = "uppercase"; 
 
 const identity = {
   firstName: "莎拉",
@@ -9,6 +13,7 @@ const identity = {
 };
 
 const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+
 ---
 <html lang="zh-CN">
   <head>
@@ -16,18 +21,19 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
     <meta name="viewport" content="width=device-width" />
     <title>{pageTitle}</title>
   </head>
-  <style>
+  <style define:vars={{skillColor, fontWeight, textCase}}>
         h1 {
             color: purple;
             font-size: 4rem;
         }
         .skills {
-        color: green;
+        color: rgb(17, 128, 0);
         font-weight: bold;
         }
         .skill {
-        color: rgb(241, 123, 5);
-        font-weight: bold;
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
         }
     </style>
   <body>
