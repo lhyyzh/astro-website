@@ -1,0 +1,9 @@
+---
+import Social from "./Social.astro";
+const platform = "github";
+const username = "lhyyzh";
+---
+<footer>
+    <!--对组件进行动态渲染，实现根据属性值渲染不同的组件 -->
+  <p>在 <Social platform={platform} username={username} /> 上，了解有关我的项目的更多信息！</p>
+</footer>
