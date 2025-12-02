@@ -1,6 +1,7 @@
 ---
 import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Header from '../components/header.astro';
 import '../styles/global.css';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/footer.astro';
@@ -10,7 +11,7 @@ const pageTitle = "我的 Astro 学习博客";
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 <Layout>
-    <Navigation />
+    <Header />
 
     <h1>{pageTitle}</h1>
     <p>在这里，我将分享我的 Astro 学习之旅。</p>
@@ -19,5 +20,8 @@ const pageTitle = "我的 Astro 学习博客";
       <li><a href="/posts/post-2/">文章 2</a></li>
       <li><a href="/posts/post-3/">文章 3</a></li>
     </ul>
+    <script>
+      import '../scripts/menu.js';
+    </script>
     <Footer />
 </Layout>

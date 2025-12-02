@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Navigation from "../components/Navigation.astro";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/footer.astro";
+import Header from "../components/header.astro";
 const pageTitle = "关于我";
 const skillColor = "rgb(241, 123, 5)";
 const fontWeight = "bold";
@@ -21,6 +22,7 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <title>{pageTitle}</title>
     <style define:vars={{ skillColor, fontWeight, textCase }}>
@@ -37,11 +39,11 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
         font-weight: var(--fontWeight);
         text-transform: var(--textCase);
       }
-    </style></head
-  >
+    </style>
+  </head>
 
   <body>
-    <Navigation />
+    <Header />
     <h1>{pageTitle}</h1>
     <p>以下是关于我的几个事实：</p>
     <ul>
@@ -73,5 +75,8 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
       }
     </ul>
     <Footer />
+    <script>
+      import '../scripts/menu.js';
+    </script>
   </body>
 </html>

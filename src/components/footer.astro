@@ -3,7 +3,23 @@ import Social from "./Social.astro";
 const platform = "github";
 const username = "lhyyzh";
 ---
+  
+<style>
+  footer {
+    display: flex;
+    color: blue;
+    gap: 1rem;
+    margin-top: 2rem;
+  }
+  footer p {
+    font-size: 1.2rem;
+    color: blue;
+  }
+</style>
+
 <footer>
-    <!--对组件进行动态渲染，实现根据属性值渲染不同的组件 -->
-  <p>在 <Social platform={platform} username={username} /> 上，了解有关我的项目的更多信息！</p>
+    <!--对组件进行动态渲染，实现根据属性值渲染不同的组件 请注意，组件的属性值必须是静态的，不能是动态的，否则会报错 -->
+  <!-- <p >在 <Social platform={platform} username={username} /> 上，了解有关我的项目的更多信息！</p>-->
+  <p >测试样式  </p>
+  <Social platform="twitter" username="astrodotbuild" />
 </footer>
