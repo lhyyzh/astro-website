@@ -16,9 +16,11 @@ body {
 }
 
 h1 {
+  color: purple;
   margin: 1rem 0;
   font-size: 2.5rem;
 }
+
 .menu {
   background-color: #0d0950;
   border: none;

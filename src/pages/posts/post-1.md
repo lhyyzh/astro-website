@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css';
+layout: ../../layouts/MarkdownPostLayout.astro
 title: '我的第一篇博客文章'
 pubDate: 2022-07-01
 description: '这是我 Astro 博客的第一篇文章。'
@@ -8,15 +8,15 @@ image:
     url: 'https://docs.astro.build/assets/rose.webp'
     alt: 'The Astro logo on a dark background with a pink glow.'
 tags: ["astro", "blogging", "learning in public"]
+returnUrl: '/blog/'
 ---
-
 # 我的第一篇博客文章
 
  发表于：2022-07-01
 
  欢迎来到我学习关于 Astro 的新博客！在这里，我将分享我建立新网站的学习历程。
 
- ## 我做了什么
+## 我做了什么
 
  1. **安装 Astro**：首先，我创建了一个新的 Astro 项目并设置好了我的在线账号。
 
@@ -24,6 +24,6 @@ tags: ["astro", "blogging", "learning in public"]
 
  3. **发表博客文章**：这是我的第一篇博客文章！我现在有用 Astro 编写的页面和用 Markdown 写的文章了！
 
- ## 下一步计划
+## 下一步计划
 
  我将完成 Astro 教程，然后继续编写更多内容。关注我以获取更多信息。

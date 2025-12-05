@@ -1,9 +1,6 @@
 ---
-import "../styles/global.css";
-import Navigation from "../components/Navigation.astro";
-import Layout from "../layouts/Layout.astro";
-import Footer from "../components/footer.astro";
-import Header from "../components/header.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
 const pageTitle = "关于我";
 const skillColor = "rgb(241, 123, 5)";
 const fontWeight = "bold";
@@ -18,65 +15,52 @@ const identity = {
 
 const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 ---
+<style is:global define:vars={{ skillColor, fontWeight, textCase }}>
+  h1 {
+  color: rgb(250, 98, 4);
+  margin: 1rem 0;
+  font-size: 2.5rem;
+  }
+  .skills {
+    color: rgb(17, 128, 0);
+    font-weight: bold;
+  }
+  .skill {
+    color: var(--skillColor);
+    font-weight: var(--fontWeight);
+    text-transform: var(--textCase);
+  }
+</style>
 
-<html lang="zh-CN">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <title>{pageTitle}</title>
-    <style define:vars={{ skillColor, fontWeight, textCase }}>
-      h1 {
-        color: purple;
-        font-size: 4rem;
-      }
-      .skills {
-        color: rgb(17, 128, 0);
-        font-weight: bold;
-      }
-      .skill {
-        color: var(--skillColor);
-        font-weight: var(--fontWeight);
-        text-transform: var(--textCase);
-      }
-    </style>
-  </head>
+<BaseLayout pageTitle={pageTitle}>
+  <p>以下是关于我的几个事实：</p>
+  <ul>
+    <li>我的名字是{identity.firstName}。</li>
+    <li>我住在{identity.country}。我的职业是{identity.occupation}。</li>
+    {
+      identity.hobbies.length >= 1 && (
+        <li>
+          我的爱好包括：
+          <ul>
+            {identity.hobbies.map((hobby) => (
+              <li>{hobby}</li>
+            ))}
+          </ul>
+        </li>
+      )
+    }
+    {
+      skills.length >= 1 && (
+        <li>
+          <span class="skills">我的技能包括：</span>
+          <ul>
+            {skills.map((tmp) => (
+              <li class="skill">{tmp}</li>
+            ))}
+          </ul>
+        </li>
+      )
+    }
+  </ul>
+</BaseLayout>
 
-  <body>
-    <Header />
-    <h1>{pageTitle}</h1>
-    <p>以下是关于我的几个事实：</p>
-    <ul>
-      <li>我的名字是{identity.firstName}。</li>
-      <li>我住在{identity.country}。我的职业是{identity.occupation}。</li>
-      {
-        identity.hobbies.length >= 1 && (
-          <li>
-            我的爱好包括：
-            <ul>
-              {identity.hobbies.map((hobby) => (
-                <li>{hobby}</li>
-              ))}
-            </ul>
-          </li>
-        )
-      }
-      {
-        skills.length >= 1 && (
-          <li>
-            <span class="skills">我的技能包括：</span>
-            <ul>
-              {skills.map((tmp) => (
-                <li class="skill">{tmp}</li>
-              ))}
-            </ul>
-          </li>
-        )
-      }
-    </ul>
-    <Footer />
-    <script>
-      import '../scripts/menu.js';
-    </script>
-  </body>
-</html>
