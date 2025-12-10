@@ -1,16 +1,20 @@
 ---
+import {getCollection} from "astro:content";
+
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPost from "../layouts/BlogPost.astro";
 
 const pageTitle = "我的 Astro 学习博客";
-const allPosts = Object.values(import.meta.glob('./posts/*.md', { eager: true }));
-allPosts.sort((a,b) => (b as any).frontmatter.pubDate - (a as any).frontmatter.pubDate);
+
+const allPosts = await getCollection('blog');
+
+allPosts.sort((a,b) => (b as any).data.pubDate - (a as any).data.pubDate);
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 <BaseLayout pageTitle={pageTitle}>
   <p>在这里，我将分享我的 Astro 学习之旅。</p>
   <ul>
-    {allPosts.map( (post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
+    {allPosts.map((pos: any) =><BlogPost url={`/posts/${pos.id}/`} title={pos.data.title} />)}
   </ul>
 </BaseLayout>

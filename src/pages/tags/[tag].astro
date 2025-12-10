@@ -1,29 +1,38 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import BlogPost from '../../layouts/BlogPost.astro';
+import { getCollection } from "astro:content";
+
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPost from "../../layouts/BlogPost.astro";
 
 export async function getStaticPaths() {
-  const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
+  const allPosts = await getCollection("blog");
 
-  const uniqueTags = [...new Set(allPosts.flatMap((post: any) => post.frontmatter.tags).flat())];
+  const uniqueTags = [
+    ...new Set(allPosts.flatMap((post: any) => post.data.tags).flat()),
+  ];
 
   return uniqueTags.map((tag) => {
-  const filteredPosts = allPosts.filter((post: any) => post.frontmatter.tags.includes(tag));
-  return {
-    params: { tag },
-    props: { posts: filteredPosts },
-  };
-});
-
+    const filteredPosts = allPosts.filter((post: any) =>
+      post.data.tags.includes(tag)
+    );
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
 }
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
-
 ---
+
 <BaseLayout pageTitle={tag}>
-  <p>包含「{tag}」标签的文章</p>
+  <p>包含「{tag}」标签的文章，共 {posts.length} 篇</p>
   <ul>
-    {posts.map( (post: any) => <BlogPost url={post.url} title={post.frontmatter.title} />)}
+    {
+      posts.map((post: any) => (
+        <BlogPost url={`/posts/${post.id}/`} title={post.data.title} />
+      ))
+    }
   </ul>
 </BaseLayout>

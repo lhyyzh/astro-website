@@ -2,27 +2,41 @@
 import Social from "./Social.astro";
 const platform = "github";
 const username = "lhyyzh";
+const year = new Date().getFullYear();
 ---
   
 <style>
   footer {
     display: flex;
+    align-items: center; /* 垂直居中对齐 */
+    gap: 1rem; /* 元素间添加间距 */
     color: blue;
-    gap: 1rem;
-    margin-top: 2rem;
   }
+  
   footer p {
     font-size: 1.2rem;
     color: blue;
+    margin: 0; /* 移除默认边距 */
+  }
+  
+  /* 添加针对 Social 组件的样式 */
+  footer :global(.social-link) {
+    font-size: 1.2rem; /* 与 footer p 元素字体大小一致 */
+    background-color: purple; /* 紫色背景 */
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    display: inline-block;
   }
 </style>
 
 <footer>
     <!--对组件进行动态渲染，实现根据属性值渲染不同的组件 请注意，组件的属性值必须是静态的，不能是动态的，否则会报错 -->
   <!-- <p >在 <Social platform={platform} username={username} /> 上，了解有关我的项目的更多信息！</p>-->
-  <p >测试样式  </p>
+  <p >{year} 年版权所有 </p>
   <Social platform="twitter" username="astrodotbuild" />
 
-  { Astro.url.pathname !== '/' &&(<a href="/">返回首页</a>)}
+  <div>{ Astro.url.pathname !== '/' &&(<a href="/">返回首页</a>)}</div>
 
 </footer>

@@ -1,8 +1,11 @@
 ---
+import { getCollection } from 'astro:content';
+
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const allTags = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
-const tags = [...new Set( allTags.map( (tag) => (tag as any).frontmatter.tags).flat() )]
+const allTags = await getCollection('blog');
+
+const tags = [...new Set( allTags.map( (tag) => (tag as any).data.tags).flat() )]
 const pageTitle = "标签索引";
 ---
 

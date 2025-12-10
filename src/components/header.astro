@@ -7,17 +7,31 @@ import ThemeIcon from "./ThemeIcon.astro";
 <header>
   <nav>
     <div>
-      <ThemeIcon />
       <Menu />
     </div>
-    <Navigation />
+    <div class="nav-container">
+      <Navigation />
+      <ThemeIcon />
+    </div>
+
   </nav>
 </header>
 
-
 <style>
- div {
-   display: flex;
-   justify-content: space-between;
- }
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .nav-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem; /* 在 Navigation 和 ThemeIcon 之间添加一些间距 */
+  }
+  
+  div:first-child {
+    display: flex;
+    justify-content: space-between;
+  }
 </style>
