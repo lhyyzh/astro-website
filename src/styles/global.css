@@ -74,6 +74,8 @@ h1 {
   }
   
 }
+/* 配合 ThemeSelect 组件 */
+/*
 html.dark {
   background-color: #0d0950;
   color: #fff;
@@ -96,3 +98,35 @@ html.dark {
 .dark a {
   color: #ff9776;
 }
+*/
+
+/* 使用 data-theme 属性，配合 ThemeSelect 组件 */
+html[data-theme="dark"] {
+  background-color: #0d0950;
+  color: #fff;
+}
+
+html[data-theme="light"] {
+  background-color: #b1d1f1;
+  color: #000;
+}
+
+/* 更新相关的后代元素样式 */
+[data-theme="dark"] .menu {
+  background-color: #fff;
+  color: #000;
+}
+
+[data-theme="dark"] .nav-links a:hover,
+[data-theme="dark"] .nav-links a:focus {
+  color: #0d0950;
+}
+
+[data-theme="dark"] .nav-links a {
+  color: #fff;
+}
+
+[data-theme="dark"] a {
+  color: #ff9776;
+}
+

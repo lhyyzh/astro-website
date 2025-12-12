@@ -1,9 +1,13 @@
 ---
 import Navigation from "./Navigation.astro";
 import Menu from "./Menu.astro";
-import ThemeIcon from "./ThemeIcon.astro";
----
+//import ThemeIcon from "./ThemeIcon.astro";
 
+import ThemeManager from "./ThemeManager.astro";
+import ThemeSelect from "./ThemeSelect.astro";
+
+---
+<ThemeManager defaultTheme="auto" />
 <header>
   <nav>
     <div>
@@ -11,9 +15,9 @@ import ThemeIcon from "./ThemeIcon.astro";
     </div>
     <div class="nav-container">
       <Navigation />
-      <ThemeIcon />
+      <ThemeSelect />
+      <!--<ThemeIcon />-->
     </div>
-
   </nav>
 </header>
 
@@ -34,4 +38,5 @@ import ThemeIcon from "./ThemeIcon.astro";
     display: flex;
     justify-content: space-between;
   }
+
 </style>

@@ -1,0 +1,26 @@
+---
+import ThemeManager from "../components/ThemeManager.astro";
+import ThemeSelect from "../components/ThemeSelect.astro";
+---
+
+<html lang="en">
+  <head>
+    <!-- ... -->
+
+  </head>
+  <main>
+    <body>
+      <ThemeManager defaultTheme="auto" />
+      <ThemeSelect />
+      <slot />
+    </body>
+  </main>
+  <style is:global>
+    :root[data-theme="light"] {
+      /* CSS variables */
+    }
+    :root[data-theme="dark"] {
+      /* CSS variables */
+    }
+  </style>
+</html>
